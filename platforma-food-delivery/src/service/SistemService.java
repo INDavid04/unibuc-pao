@@ -1,6 +1,8 @@
 package service;
 
 import model.*;
+
+import java.time.LocalDateTime;
 import java.util.*;
 
 public class SistemService {
@@ -8,6 +10,7 @@ public class SistemService {
     private List<Utilizator> utilizatori = new ArrayList<>();
     private TreeSet<Local> localuri = new TreeSet<>();
     private List<Comanda> comenzi = new ArrayList<>();
+    private List<Recenzie> recenzii = new ArrayList<>();
 
     /// Adauga manager
     public void adaugaManager(int id, String nume, String mail, int id_manager) {
@@ -30,21 +33,69 @@ public class SistemService {
     }
 
     /// Adauga comanda
-    public void adaugaComanda(int id_comanda, List<Produs> produse) {
-        comenzi.add(new Comanda(id_comanda, produse));
+    public void adaugaComanda(int id_comanda) {
+        comenzi.add(new Comanda(id_comanda));
     }
 
     /// Adauga produs
+    public void adaugaProdus(int id_comanda, String denumire, int cantitate) {
+        for (Comanda comanda : comenzi) {
+            if (id_comanda == comanda.getId_comanda()) {
+                comanda.adaugaProdus(new Produs(denumire, cantitate));
+            }
+        }
+    }
 
     /// Adauga adresa
+    public void adaugaAdresa(int id_comanda, String tara, String localitate, String strada, int numar) {
+        for (Comanda comanda : comenzi) {
+            if (id_comanda == comanda.getId_comanda()) {
+                comanda.adaugaAdresa(new Adresa(tara, localitate, strada, numar));
+            }
+        }
+    }
 
     /// Adauga recenzie
+    public void adaugaRecenzie(String denumire_local, LocalDateTime data_postarii, int numar_stele) {
+        for (Local local : localuri) {
+            if (local.getDenumire() == denumire_local) {
+                local.adaugaRecenzie(new Recenzie(data_postarii, numar_stele));
+            } else {
+                System.out.print("Nu am gasit localul " + denumire_local);
+            }
+        }
+    }
 
     /// Actualizeaza adresa
+    public void actualizeazaAdresa(int id_comanda, String noua_tara, String noua_localitate, String noua_strada, int noul_numar) {
+        for (Comanda comanda : comenzi) {
+            if (id_comanda == comanda.getId_comanda()) {
+                comanda.modificaAdresa(noua_tara, noua_localitate, noua_strada, noul_numar);
+            }
+        }
+    }
 
     /// Modifica Recenzie
+    public void modificaRecenzie(String denumire_local, LocalDateTime data_postarii, int numar_stele) {
+        for (Local local : localuri) {
+            if (local.getDenumire() == denumire_local) {
+                local.modificaRecenzie(data_postarii, numar_stele);
+            } else {
+                System.out.print("Nu am gasit localul " + denumire_local);
+            }
+        }
+    }
 
     /// Sterge recenzie
+    public void stergeRecenzie (String denumire_local, LocalDateTime data_postarii) {
+        for (Local local : localuri) {
+            if (denumire_local.equals(local.getDenumire())) {
+                local.stergeRecenzie(data_postarii);
+            } else {
+                System.out.print("Nu am gasit localul " + denumire_local);
+            }
+        }
+    }
 
     /// Afiseaza localurile in ordine alfabetica
 

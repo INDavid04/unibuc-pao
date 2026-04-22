@@ -31,9 +31,7 @@ public class Adresa {
     }
 
     /// Setteri
-    public void setTara(String tara) {
-        this.tara = tara;
-    }
+    public void setTara(String tara) { this.tara = tara; }
 
     public void setLocalitate(String localitate) {
         this.localitate = localitate;

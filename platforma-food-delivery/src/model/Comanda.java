@@ -6,11 +6,11 @@ public class Comanda {
     /// Atribute
     private int id_comanda;
     private List<Produs> produse;
+    private Adresa adresa;
 
     /// Constructor
-    public Comanda(int id_comanda, List<Produs> produse) {
+    public Comanda(int id_comanda) {
         this.id_comanda = id_comanda;
-        this.produse = produse;
     }
 
     ///  Getteri
@@ -29,5 +29,23 @@ public class Comanda {
 
     public void setProduse(List<Produs> produse) {
         this.produse = produse;
+    }
+
+    /// Adauga un produs
+    public void adaugaProdus(Produs produs) {
+        this.produse.add(produs);
+    }
+
+    /// Adauga o adresa
+    public void adaugaAdresa(Adresa adresa) {
+        this.adresa = adresa;
+    }
+
+    /// Modifica o adresa
+    public void modificaAdresa(String tara, String localitate, String strada, int numar) {
+        this.adresa.setTara(tara);
+        this.adresa.setLocalitate(localitate);
+        this.adresa.setStrada(strada);
+        this.adresa.setNumar(numar);
     }
 }
