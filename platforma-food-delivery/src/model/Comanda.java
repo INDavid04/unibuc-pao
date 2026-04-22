@@ -1,5 +1,6 @@
 package model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Comanda {
@@ -11,6 +12,7 @@ public class Comanda {
     /// Constructor
     public Comanda(int id_comanda) {
         this.id_comanda = id_comanda;
+        this.produse = new ArrayList<>();
     }
 
     ///  Getteri

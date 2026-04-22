@@ -95,12 +95,16 @@ public class SistemService {
 
     /// Sterge recenzie
     public void stergeRecenzie (String denumire_local, LocalDateTime data_postarii) {
+        boolean gasit = false;
         for (Local local : localuri) {
             if (denumire_local.equals(local.getDenumire())) {
                 local.stergeRecenzie(data_postarii);
-            } else {
-                System.out.print("Nu am gasit localul " + denumire_local);
+                gasit = true;
+                break;
             }
+        }
+        if (!gasit) {
+            System.out.print("Nu am gasit localul " + denumire_local);
         }
     }
 
