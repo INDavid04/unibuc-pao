@@ -10,7 +10,6 @@ public class SistemService {
     private List<Utilizator> utilizatori = new ArrayList<>();
     private TreeSet<Local> localuri = new TreeSet<>();
     private List<Comanda> comenzi = new ArrayList<>();
-    private List<Recenzie> recenzii = new ArrayList<>();
 
     /// Adauga manager
     public void adaugaManager(int id, String nume, String mail, int id_manager) {
@@ -57,12 +56,16 @@ public class SistemService {
 
     /// Adauga recenzie
     public void adaugaRecenzie(String denumire_local, LocalDateTime data_postarii, int numar_stele) {
+        boolean gasit = false;
         for (Local local : localuri) {
-            if (local.getDenumire() == denumire_local) {
+            if (local.getDenumire().equals(denumire_local)) {
                 local.adaugaRecenzie(new Recenzie(data_postarii, numar_stele));
-            } else {
-                System.out.print("Nu am gasit localul " + denumire_local);
+                gasit = true;
+                break;
             }
+        }
+        if (!gasit){
+            System.out.print("Nu am gasit localul " + denumire_local);
         }
     }
 
@@ -77,12 +80,16 @@ public class SistemService {
 
     /// Modifica Recenzie
     public void modificaRecenzie(String denumire_local, LocalDateTime data_postarii, int numar_stele) {
+        boolean gasit = false;
         for (Local local : localuri) {
-            if (local.getDenumire() == denumire_local) {
+            if (local.getDenumire().equals(denumire_local)) {
                 local.modificaRecenzie(data_postarii, numar_stele);
-            } else {
-                System.out.print("Nu am gasit localul " + denumire_local);
+                gasit = true;
+                break;
             }
+        }
+        if (!gasit) {
+            System.out.print("Nu am gasit localul " + denumire_local);
         }
     }
 
