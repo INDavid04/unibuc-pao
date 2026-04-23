@@ -138,7 +138,7 @@ public class SistemService {
     }
 
     /// Afiseaza recenziile dupa numarul de stele
-    public void afiseazaRecenziileDupaStele() {
+    public void afiseazaRecenziiDupaStele() {
         System.out.println("Recenziile dupa numarul de stele:");
 
         /// Strange toate recenziile din toate localurile
