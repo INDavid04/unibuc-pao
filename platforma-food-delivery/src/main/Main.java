@@ -1,7 +1,7 @@
 package main;
 
 import service.SistemService;
-import.java.time.LocalDateTime;
+import java.time.LocalDateTime;
 
 public class Main {
     public static void main(String[] args) {
@@ -9,6 +9,8 @@ public class Main {
 
         /// 1. Adauga un utilizator (manager/client/sofer)
         service.adaugaManager(101, "Vlad Marcel", "vlad_marcel@fooddelivery.ro", 101);
+        service.adaugaClient(231, "Mia Tia", "mia_tia@fooddelivery.ro", "+40712345678");
+        service.adaugaClient(589, "Ion Popescu", "ion_popescu@fooddelivery.ro", "+40709876543");
 
         /// 2. Adauga un local
 
