@@ -109,8 +109,50 @@ public class SistemService {
     }
 
     /// Afiseaza localurile in ordine alfabetica
+    public void afiseazaLocaluriAlfabetic() {
+        System.out.println("Localurile in ordine alfabetica:");
+
+        /// Datorita faptului ca localuri este un TreeSet, se vor sorta automat localurile in momentul adaugarii
+        for (Local local : localuri) {
+            System.out.println(local.getDenumire());
+        }
+    }
 
     /// Afiseaza recenziile dupa data postarii
+    public void afiseazaRecenziiDupaData() {
+        System.out.println("Recenziile dupa data postarii:");
+
+        /// Strange toate recenziile din toate localurile
+        List<Recenzie> toate_recenziile = new ArrayList<>();
+        for (Local local : localuri) {
+            toate_recenziile.addAll(local.getRecenzii());
+        }
+
+        /// Sorteaza toate recenziile dupa data postarii
+        toate_recenziile.sort(Comparator.comparing(Recenzie::getData_postarii));
+
+        /// Afiseaza recenziile dupa data postarii
+        for (Recenzie recenzie : toate_recenziile) {
+            System.out.println(recenzie.getData_postarii() + " - " + recenzie.getNumar_stele() + " stele");
+        }
+    }
 
     /// Afiseaza recenziile dupa numarul de stele
+    public void afiseazaRecenziileDupaStele() {
+        System.out.println("Recenziile dupa numarul de stele:");
+
+        /// Strange toate recenziile din toate localurile
+        List<Recenzie> toate_recenziile = new ArrayList<>();
+        for (Local local : localuri) {
+            toate_recenziile.addAll(local.getRecenzii());
+        }
+
+        /// Sorteaza toate recenziile dupa numarul de stele
+        toate_recenziile.sort(Comparator.comparing(Recenzie::getNumar_stele).reversed());
+
+        /// Afiseaza recenziile dupa numarul de stele
+        for (Recenzie recenzie : toate_recenziile) {
+            System.out.println(recenzie.getData_postarii() + " - " + recenzie.getNumar_stele() + " stele");
+        }
+    }
 }

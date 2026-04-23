@@ -4,6 +4,7 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
+import java.lang.Comparable;
 
 public class Local implements Comparable<Local> {
     /// Atribute
@@ -16,10 +17,12 @@ public class Local implements Comparable<Local> {
         this.recenzii = new ArrayList<>();
     }
 
-    /// Getter
+    /// Getteri
     public String getDenumire() {
         return denumire;
     }
+
+    public List<Recenzie> getRecenzii() { return recenzii; }
 
     /// Setter
     public void setDenumire(String denumire) {
@@ -53,7 +56,7 @@ public class Local implements Comparable<Local> {
 
     /// Permite localurile sa fie comparate
     @Override
-    public int compareTo(model.Local o) {
+    public int compareTo(Local o) {
         return this.denumire.compareTo(o.denumire);
     }
 }
